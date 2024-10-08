@@ -1,0 +1,39 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mbc.mjy_test0906.book.BookService">
+     <insert id="insertb">
+insert into booktest values(booknumber_seq.nextval,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},0)
+</insert>
+<select id="bout" resultType="com.mbc.mjy_test0906.book.BookDTO">
+select booknumber,bookname,writer,bookcompany,price,to_char(bookdate,'yyyy-MM-dd')bookdate,content,cover,breadcnt from booktest
+</select>
+<select id="bdetail" resultType="com.mbc.mjy_test0906.book.BookDTO">
+	select booknumber,bookname,writer,bookcompany,price,to_char(bookdate,'yyyy-MM-dd')bookdate,content,cover,breadcnt from booktest where booknumber =#{param1}
+</select>
+<update id="readcnt">
+	update booktest set breadcnt = breadcnt + 1 where booknumber =#{param1}
+</update>
+<select id="delete" resultType="com.mbc.mjy_test0906.book.BookDTO">
+	select booknumber,bookname,writer,bookcompany,price,to_char(bookdate,'yyyy-MM-dd')bookdate,content,cover from booktest where booknumber =#{param1}
+</select>
+<delete id="delete2">
+	delete from booktest where booknumber = #{param1}
+</delete>
+<select id="update1" resultType="com.mbc.mjy_test0906.book.BookDTO">
+	select booknumber,bookname,writer,bookcompany,price,to_char(bookdate,'yyyy-MM-dd')bookdate,content,cover from booktest where booknumber =#{param1} 
+</select>
+<update id="update2">
+	update booktest set bookname=#{param2},writer=#{param3},bookcompany=#{param4},price=#{param5},bookdate=#{param6},content=#{param7},cover=#{param8} where booknumber=#{param1}
+</update>
+<select id="booknamesearch" resultType="com.mbc.mjy_test0906.book.BookDTO">
+	 select booknumber,bookname,writer,bookcompany,price,to_char(bookdate,'yyyy-MM-dd')bookdate,content,cover from booktest where bookname like '%' || #{param1} || '%'
+</select>
+<select id="bookwritersearch" resultType="com.mbc.mjy_test0906.book.BookDTO">
+	 select booknumber,bookname,writer,bookcompany,price,to_char(bookdate,'yyyy-MM-dd')bookdate,content,cover from booktest where writer like '%' || #{param1} || '%'
+</select>
+<select id="contentsearch" resultType="com.mbc.mjy_test0906.book.BookDTO">
+	 select booknumber,bookname,writer,bookcompany,price,to_char(bookdate,'yyyy-MM-dd')bookdate,content,cover from booktest where content like '%' || #{param1} || '%'
+</select>
+</mapper>

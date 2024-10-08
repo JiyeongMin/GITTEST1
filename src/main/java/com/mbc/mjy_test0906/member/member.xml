@@ -1,0 +1,15 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mbc.mjy_test0906.member.MemberService">
+<insert id="minsert">
+	insert into member0906 values(#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8})
+</insert>
+     <select id="mout" resultType="com.mbc.mjy_test0906.member.MemberDTO">
+	select * from member0906
+</select>
+<select id="idoverlapcheck" resultType="int">
+	select count(*) from member0906 where id=#{param1}
+</select>     
+</mapper>
